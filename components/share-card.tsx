@@ -122,14 +122,14 @@ export function ShareCard({ totalAllocation, walletCount }: ShareCardProps) {
 
             {/* Content - Positioned top-right */}
             <div className="absolute right-8 top-8 text-right z-10">
-              <div className="text-[4.5rem] md:text-[5rem] font-bold text-white mb-0 tracking-tight leading-none">
+              <div className="text-[4.5rem] md:text-[5rem] font-bold bg-gradient-to-r from-violet-500 via-pink-500 to-orange-500 bg-clip-text text-transparent mb-0 tracking-tight leading-none">
                 {totalAllocation.toFixed(2)}
               </div>
               <div className="text-3xl md:text-4xl font-semibold text-white">MET</div>
             </div>
 
             {/* meteora.ag - Bottom right */}
-            <div className="absolute bottom-8 right-8 text-base text-white/50 z-10">
+            <div className="absolute bottom-4 right-8 text-base text-white/50 z-10">
               meteora.ag
             </div>
           </div>
