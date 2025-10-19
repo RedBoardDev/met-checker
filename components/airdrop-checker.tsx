@@ -106,7 +106,7 @@ export function AirdropChecker() {
     }
   }
 
-  const totalAllocation = results.reduce((sum, wallet) => sum + wallet.allocation, 0)
+  const totalAllocation = results.reduce((sum, wallet) => sum + wallet.allocation + wallet.jupStakers, 0)
 
   return (
     <div className="container mx-auto px-4 py-8 md:py-12 max-w-7xl">
