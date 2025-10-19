@@ -25,32 +25,27 @@ export function ShareCard({ totalAllocation, walletCount }: ShareCardProps) {
     if (!cardRef.current) return
 
     try {
-      const html2canvas = (await import("html2canvas-pro")).default
-      const canvas = await html2canvas(cardRef.current, {
-        backgroundColor: null,
-        scale: 2,
-        useCORS: true,
-        allowTaint: true,
-        logging: false,
+      const { toBlob } = await import("html-to-image")
+      const blob = await toBlob(cardRef.current, {
+        cacheBust: true,
+        pixelRatio: 2,
       })
 
-      canvas.toBlob(async (blob) => {
-        if (blob) {
-          try {
-            await navigator.clipboard.write([
-              new ClipboardItem({ "image/png": blob })
-            ])
-            toast.success("Card copied to clipboard!", {
-              description: "You can now paste it anywhere"
-            })
-          } catch (err) {
-            console.error("Failed to copy:", err)
-            toast.error("Failed to copy to clipboard", {
-              description: "Your browser may not support this feature"
-            })
-          }
+      if (blob) {
+        try {
+          await navigator.clipboard.write([
+            new ClipboardItem({ "image/png": blob })
+          ])
+          toast.success("Card copied to clipboard!", {
+            description: "You can now paste it anywhere"
+          })
+        } catch (err) {
+          console.error("Failed to copy:", err)
+          toast.error("Failed to copy to clipboard", {
+            description: "Your browser may not support this feature"
+          })
         }
-      })
+      }
     } catch (error) {
       console.error("Failed to copy:", error)
       toast.error("Failed to copy card", {
@@ -63,18 +58,15 @@ export function ShareCard({ totalAllocation, walletCount }: ShareCardProps) {
     if (!cardRef.current) return
 
     try {
-      const html2canvas = (await import("html2canvas-pro")).default
-      const canvas = await html2canvas(cardRef.current, {
-        backgroundColor: null,
-        scale: 2,
-        useCORS: true,
-        allowTaint: true,
-        logging: false,
+      const { toPng } = await import("html-to-image")
+      const dataUrl = await toPng(cardRef.current, {
+        cacheBust: true,
+        pixelRatio: 2,
       })
 
       const link = document.createElement("a")
       link.download = `meteora-allocation-${Date.now()}.png`
-      link.href = canvas.toDataURL("image/png")
+      link.href = dataUrl
       link.click()
       toast.success("Card downloaded!", {
         description: "Check your downloads folder"
@@ -129,8 +121,9 @@ export function ShareCard({ totalAllocation, walletCount }: ShareCardProps) {
             </div>
 
             {/* meteora.ag - Bottom right */}
-            <div className="absolute bottom-4 right-8 text-base text-white/50 z-10">
-              meteora.ag
+            <div className="absolute bottom-2 right-8 text-right z-10">
+              <div className="text-base text-white/50">meteora.ag</div>
+              <div className="text-sm text-white/70">met-checker.vercel.app</div>
             </div>
           </div>
 
