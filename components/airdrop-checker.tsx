@@ -117,6 +117,12 @@ export function AirdropChecker() {
         </h1>
       </div>
 
+      <div className="bg-amber-500/10 border border-amber-500/30 rounded-lg px-4 py-2.5 mb-4">
+        <p className="text-sm text-amber-600 dark:text-amber-400 text-center font-medium">
+          ⚠️ Official site: <span className="font-bold">met.meteora.ag</span> only. Beware of scams - never connect your wallet elsewhere.
+        </p>
+      </div>
+
       <div className="gradient-border mb-12">
         <div className="gradient-border-content p-6 md:p-8">
           <h2 className="text-xl md:text-2xl font-semibold mb-2 text-foreground">Check Wallet Allocations</h2>
