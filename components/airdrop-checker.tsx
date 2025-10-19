@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Card } from "@/components/ui/card"
 import { Loader2 } from "lucide-react"
 import { WalletAllocation } from "@/components/wallet-allocation"
+import { ShareCard } from "@/components/share-card"
 import { fetchWalletAllocation, type MeteoraBreakdown } from "@/lib/meteora-api"
 
 interface WalletData {
@@ -161,9 +162,10 @@ export function AirdropChecker() {
               <h2 className="text-lg md:text-xl text-muted-foreground uppercase tracking-wide mb-2">
                 Total Allocation
               </h2>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-muted-foreground mb-3">
                 Across {results.length} {results.length === 1 ? "wallet" : "wallets"}
               </p>
+              <ShareCard totalAllocation={totalAllocation} walletCount={results.length} />
             </div>
             <div className="text-right">
               <div className="text-5xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-violet-500 via-pink-500 to-orange-500 bg-clip-text text-transparent leading-none mb-2">
