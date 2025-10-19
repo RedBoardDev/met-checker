@@ -110,9 +110,9 @@ export function AirdropChecker() {
   const totalAllocation = results.reduce((sum, wallet) => sum + wallet.allocation + wallet.jupStakers, 0)
 
   return (
-    <div className="container mx-auto px-4 py-8 md:py-12 max-w-7xl">
+    <div className="container mx-auto px-4 py-8 md:py-12 max-w-5xl">
       <div className="flex items-center justify-center mb-12 md:mb-16">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-orange-500 via-orange-400 to-yellow-400 bg-clip-text text-transparent">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-orange-600 via-orange-400 to-yellow-300 bg-clip-text text-transparent">
           MET Airdrop Checker
         </h1>
       </div>
